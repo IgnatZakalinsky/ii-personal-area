@@ -1,4 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with `yarn create react-app my-app --template typescript`.
+
+## Libraries
+
+### `yarn add`
+
+@reduxjs/toolkit<br/>
+redux<br/>
+react-redux @types/react-redux<br/>
+redux-thunk @types/redux-thunk<br/>
+axios @types/axios<br/>
+react-router-dom @types/react-router-dom<br/>
 
 ## Available Scripts
 
@@ -39,6 +50,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**none**
