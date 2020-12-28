@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import 'antd/dist/antd.css' // antd
+import 'antd/dist/antd.dark.css' // antd
 import {Provider} from 'react-redux'
 import {HashRouter} from 'react-router-dom'
 import Main from '../u2-main/Main'

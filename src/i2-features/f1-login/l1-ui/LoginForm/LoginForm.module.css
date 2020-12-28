@@ -1,0 +1,21 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 30vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    min-height: 10vh;
+}
+
+.loginButton {
+    width: auto;
+}
