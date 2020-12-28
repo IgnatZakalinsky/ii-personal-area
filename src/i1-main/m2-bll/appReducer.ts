@@ -30,10 +30,14 @@ export const someThunk = createAsyncThunk<{ z: number }, { x: number }, { reject
 const slice = createSlice({
     name: 'app',
     initialState: {
+        isAuth: false,
         x: 1, y: 2, z: 3,
         isLoading: false,
     },
     reducers: {
+        setAuth: (state, action: PayloadAction<{ isAuth: boolean }>) => {
+            state.isAuth = action.payload.isAuth
+        },
         setX: (state, action: PayloadAction<{ x: number }>) => {
             state.x = action.payload.x
         },

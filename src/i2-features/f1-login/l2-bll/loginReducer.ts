@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppStoreType} from '../../../i1-main/m2-bll/store'
 import {LoginAPI} from '../l3-dal/LoginAPI'
+import {appActions} from "../../../i1-main/m2-bll/appReducer";
 
 // < {answer}, {params}, {rejectValue {in catch}}>
 export const sendTokenThunk =
@@ -22,6 +23,7 @@ export const sendTokenThunk =
 
                 thunkAPI.dispatch(sendTokenThunk
                     .fulfilled({error: p.error}, 'xzId1', {token: payload.token}))
+                thunkAPI.dispatch(appActions.setAuth({isAuth: true}))
 
                 return p
             } catch (er) {
