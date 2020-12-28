@@ -21,8 +21,8 @@ export const sendTokenThunk =
                 // }))
                 const p = await LoginAPI.login(payload.token)
 
-                thunkAPI.dispatch(sendTokenThunk
-                    .fulfilled({error: p.error}, 'xzId1', {token: payload.token}))
+                // thunkAPI.dispatch(sendTokenThunk
+                //     .fulfilled({error: p.error}, 'xzId1', {token: payload.token}))
                 thunkAPI.dispatch(appActions.setAuth({isAuth: true}))
 
                 return p
@@ -34,6 +34,7 @@ export const sendTokenThunk =
                     .fulfilled({error}, 'xzId1', {token: payload.token}))
 
                 console.log('er', {...er}, er)
+                console.log('error:', error)
                 return thunkAPI.rejectWithValue({token: payload.token})
             }
         }

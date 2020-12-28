@@ -10,5 +10,10 @@ export const LoginAPI = {
 
         return response.data
     },
+    me: async () => {
+        const response = await instance.get<LoginType>('/auth/me')
+
+        return response.data
+    },
 
 }

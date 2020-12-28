@@ -3,8 +3,9 @@ import {useSelector} from 'react-redux'
 import {message} from 'antd'
 import {Redirect} from 'react-router-dom'
 import CustomSpin from '../u5-spins/CustomSpin'
-import {selectApp} from '../../../m2-bll/appReducer'
+import {appThunks, selectApp} from '../../../m2-bll/appReducer'
 import {PATH} from '../../u3-routes/Routes'
+import {useActions} from "../../../m2-bll/helpers";
 
 type DivPropsType = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
@@ -18,26 +19,31 @@ const AuthRedirectPage: React.FC<AuthRedirectPagePropsType> = React.memo((
         ...restProps
     }
 ) => {
-    const {isAuth} = useSelector(selectApp);
+    const {isVerified, isLoading, error} = useSelector(selectApp);
     const [firstRendering, setFirstRendering] = useState<boolean>(true);
     const [redirect, setRedirect] = useState<boolean>(false);
-    const [spin, setSpin] = useState<boolean>(!isAuth)
+    const [spin, setSpin] = useState<boolean>(!isVerified)
+    const {meThunk} = useActions({...appThunks})
 
     useEffect(() => {
         if (firstRendering) {
 
-            if (!isAuth) {
-                message.error('Not logged in!')
-                setTimeout(() => setRedirect(true), 1500);
+            if (!isVerified) {
+                meThunk({})
             }
             setFirstRendering(false) // + rerender
         } else {
-            spin && setSpin(false)
+            if (!isVerified && !isLoading && !redirect) {
+                message.error('Not logged in! ' + error)
+                setTimeout(() => setRedirect(true), 1500);
+            } else {
+                spin && !isLoading && setSpin(false)
+            }
         }
-    }, [firstRendering, setFirstRendering, isAuth, setRedirect, spin, setSpin]);
+    }, [firstRendering, setFirstRendering, isVerified, setRedirect, spin, setSpin, isLoading, meThunk, error]);
 
-    if (redirect) return <Redirect to={PATH.LOGIN}/>;
-    if (spin) return <CustomSpin/>;
+    if (redirect) return <Redirect to={PATH.LOGIN}/>
+    if (spin) return <CustomSpin/>
 
     return (
         <>
