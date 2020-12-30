@@ -43,7 +43,7 @@ const LoginForm: React.FC<LoginFormPropsType> = React.memo((
             <div className={s.form}>
                 <Input
                     prefix={'t: '}
-                    placeholder={'* please input token'}
+                    placeholder={'*please, input token'}
                     value={token}
                     autoFocus
                     maxLength={36}
