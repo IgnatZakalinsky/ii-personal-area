@@ -36,7 +36,7 @@ export const meThunk = createAsyncThunk<{ error?: string }, void, { rejectValue:
         try {
             const p = await LoginAPI.me()
 
-            thunkAPI.dispatch(appActions.setVerified({isVerified: true}))
+            thunkAPI.dispatch(appActions.setVerified({isVerified: true, user: p}))
 
             return p
         } catch (er) {
@@ -50,12 +50,35 @@ export const meThunk = createAsyncThunk<{ error?: string }, void, { rejectValue:
     }
 )
 
+export type UserType = {
+    id: number // 3,
+    level: number // 0,
+    telegramId: number // 746128012,
+    lastUpdateDate: string // '2020-12-30T10:09:01.0488913Z',
+    inactive: boolean // false,
+    courseId: number // 1,
+    courseTitle: string // 'Front-end developer',
+    firstName: string // 'Игнат',
+    lastName: string // 'Закалинский'
+}
+
 const slice = createSlice({
     name: 'app',
     initialState: {
         isAuth: false,
         error: '',
         isVerified: false,
+        user: {
+            id: 3,
+            level: 0,
+            telegramId: 746128012,
+            lastUpdateDate: '2020-12-30T10:09:01.0488913Z',
+            inactive: false,
+            courseId: 1,
+            courseTitle: 'Front-end developer',
+            firstName: 'Игнат',
+            lastName: 'Закалинский',
+        } as UserType,
         x: 1, y: 2, z: 3,
         isLoading: false,
     },
@@ -63,7 +86,7 @@ const slice = createSlice({
         setAuth: (state, action: PayloadAction<{ isAuth: boolean }>) => {
             state.isAuth = action.payload.isAuth
         },
-        setVerified: (state, action: PayloadAction<{ isVerified: boolean }>) => {
+        setVerified: (state, action: PayloadAction<{ isVerified: boolean, user: UserType }>) => {
             state.isAuth = action.payload.isVerified
             state.isVerified = action.payload.isVerified
             state.isLoading = false

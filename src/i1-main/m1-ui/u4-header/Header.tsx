@@ -23,7 +23,7 @@ const Header = React.memo(() => {
                     </a>
                 )}
                 extra={[
-                    <NavLink to={PATH.LOGIN} key={PATH.LOGIN}>login</NavLink>,
+                    // <NavLink to={PATH.LOGIN} key={PATH.LOGIN}>login</NavLink>,
                     <NavLink to={PATH.PROFILE} key={PATH.PROFILE}>profile</NavLink>,
                     // <NavLink to={PATH.PLAYLISTS} key={PATH.PLAYLISTS}>playlists</NavLink>,
                 ]}
