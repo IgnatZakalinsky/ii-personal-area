@@ -1,0 +1,17 @@
+.profile {
+    display: flex;
+    /*justify-content: space-around;*/
+}
+
+.avatar {
+    margin-left: 30px;
+}
+
+.info {
+    margin-left: 30px;
+    overflow: hidden;
+}
+.long {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
