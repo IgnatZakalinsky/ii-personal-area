@@ -1,11 +1,12 @@
 import {instance} from '../../../i1-main/m3-dal/instance'
-import {UserType} from "../../../i1-main/m2-bll/appReducer";
+import {UserType} from '../../../i1-main/m2-bll/appReducer'
 
 type LoginType = {
     error?: string
 }
-type MeType = UserType & {
+type MeType = {
     error?: string
+    user: UserType
 }
 
 export const LoginAPI = {
@@ -16,6 +17,11 @@ export const LoginAPI = {
     },
     me: async () => {
         const response = await instance.get<MeType>('/auth/me')
+
+        return response.data
+    },
+    logout: async () => {
+        const response = await instance.get<LoginType>('/auth/logout')
 
         return response.data
     },

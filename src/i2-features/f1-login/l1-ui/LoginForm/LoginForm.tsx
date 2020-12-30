@@ -42,6 +42,7 @@ const LoginForm: React.FC<LoginFormPropsType> = React.memo((
 
             <div className={s.form}>
                 <Input
+                    className={s.tokenInput}
                     prefix={'t: '}
                     placeholder={'*please, input token'}
                     value={token}

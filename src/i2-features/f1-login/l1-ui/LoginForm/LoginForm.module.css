@@ -19,3 +19,7 @@
 .loginButton {
     width: auto;
 }
+
+.tokenInput {
+    width: 300px;
+}
