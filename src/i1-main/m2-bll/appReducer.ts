@@ -1,6 +1,19 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppStoreType} from './store'
-import {LoginAPI} from "../../i2-features/f1-login/l3-dal/LoginAPI";
+import {LoginAPI} from '../../i2-features/f1-login/l3-dal/LoginAPI'
+
+const defUser: UserType = {
+    id: 0,
+    level: 0,
+    telegramId: 746128000,
+    lastUpdateDate: '2020-12-30T10:09:01.0488913Z',
+    inactive: false,
+    courseId: 1,
+    courseTitle: 'Front-end developer',
+    firstName: 'Fake',
+    lastName: 'Anonymous',
+    isAdmin: false,
+}
 
 // < {answer}, {params}, {rejectValue {in catch}}>
 export const someThunk = createAsyncThunk<{ z: number }, { x: number }, { rejectValue: { y: number } }>(
@@ -36,7 +49,7 @@ export const meThunk = createAsyncThunk<{ error?: string }, void, { rejectValue:
         try {
             const p = await LoginAPI.me()
 
-            thunkAPI.dispatch(appActions.setVerified({isVerified: true, user: p}))
+            thunkAPI.dispatch(appActions.setVerified({isVerified: true, user: p.user}))
 
             return p
         } catch (er) {
@@ -49,17 +62,40 @@ export const meThunk = createAsyncThunk<{ error?: string }, void, { rejectValue:
         }
     }
 )
+export const logoutThunk = createAsyncThunk<{ error?: string }, void, { rejectValue: void }>(
+    'app/logoutThunk',
+    async (payload, thunkAPI
+    ) => {
+        thunkAPI.dispatch(appActions.setLoading({isLoading: true}))
+
+        try {
+            const p = await LoginAPI.logout()
+
+            thunkAPI.dispatch(appActions.setVerified({isVerified: false, user: defUser}))
+
+            return p
+        } catch (er) {
+            const error = er.response ? er.response.data.error : (er.message + ', more details in the console')
+            thunkAPI.dispatch(meThunk.fulfilled({error}, 'xzId3'))
+
+            console.log('er', {...er}, er)
+            console.log('error:', error)
+            return thunkAPI.rejectWithValue()
+        }
+    }
+)
 
 export type UserType = {
     id: number // 3,
     level: number // 0,
-    telegramId: number // 746128012,
+    telegramId: number // 746128000,
     lastUpdateDate: string // '2020-12-30T10:09:01.0488913Z',
     inactive: boolean // false,
     courseId: number // 1,
     courseTitle: string // 'Front-end developer',
-    firstName: string // 'Игнат',
-    lastName: string // 'Закалинский'
+    firstName: string // 'Игн',
+    lastName: string // 'Зак'
+    isAdmin: boolean
 }
 
 const slice = createSlice({
@@ -68,17 +104,7 @@ const slice = createSlice({
         isAuth: false,
         error: '',
         isVerified: false,
-        user: {
-            id: 3,
-            level: 0,
-            telegramId: 746128012,
-            lastUpdateDate: '2020-12-30T10:09:01.0488913Z',
-            inactive: false,
-            courseId: 1,
-            courseTitle: 'Front-end developer',
-            firstName: 'Игнат',
-            lastName: 'Закалинский',
-        } as UserType,
+        user: defUser,
         x: 1, y: 2, z: 3,
         isLoading: false,
     },
@@ -90,6 +116,7 @@ const slice = createSlice({
             state.isAuth = action.payload.isVerified
             state.isVerified = action.payload.isVerified
             state.isLoading = false
+            state.user = action.payload.user
         },
         setX: (state, action: PayloadAction<{ x: number }>) => {
             state.x = action.payload.x
@@ -122,6 +149,6 @@ const slice = createSlice({
 export const appReducer = slice.reducer
 export const appActions = slice.actions
 export const someThunkRej = someThunk.rejected
-export const appThunks = {someThunk, meThunk}
+export const appThunks = {someThunk, meThunk, logoutThunk}
 
 export const selectApp = (state: AppStoreType) => state.app
