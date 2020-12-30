@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/ii-personal-area/static/css/main.665f71a8.chunk.css",
-    "main.js": "/ii-personal-area/static/js/main.f70bc3fd.chunk.js",
-    "main.js.map": "/ii-personal-area/static/js/main.f70bc3fd.chunk.js.map",
+    "main.css": "/ii-personal-area/static/css/main.4589fac3.chunk.css",
+    "main.js": "/ii-personal-area/static/js/main.df781b0d.chunk.js",
+    "main.js.map": "/ii-personal-area/static/js/main.df781b0d.chunk.js.map",
     "runtime-main.js": "/ii-personal-area/static/js/runtime-main.8c54ad9d.js",
     "runtime-main.js.map": "/ii-personal-area/static/js/runtime-main.8c54ad9d.js.map",
     "static/css/2.816f14d9.chunk.css": "/ii-personal-area/static/css/2.816f14d9.chunk.css",
-    "static/js/2.390f3870.chunk.js": "/ii-personal-area/static/js/2.390f3870.chunk.js",
-    "static/js/2.390f3870.chunk.js.map": "/ii-personal-area/static/js/2.390f3870.chunk.js.map",
+    "static/js/2.b32e5793.chunk.js": "/ii-personal-area/static/js/2.b32e5793.chunk.js",
+    "static/js/2.b32e5793.chunk.js.map": "/ii-personal-area/static/js/2.b32e5793.chunk.js.map",
     "index.html": "/ii-personal-area/index.html",
-    "precache-manifest.775c7f60b0e5079913daf80655e9c6bb.js": "/ii-personal-area/precache-manifest.775c7f60b0e5079913daf80655e9c6bb.js",
+    "precache-manifest.9c222cd826229b25639afcdbaab117d5.js": "/ii-personal-area/precache-manifest.9c222cd826229b25639afcdbaab117d5.js",
     "service-worker.js": "/ii-personal-area/service-worker.js",
     "static/css/2.816f14d9.chunk.css.map": "/ii-personal-area/static/css/2.816f14d9.chunk.css.map",
-    "static/css/main.665f71a8.chunk.css.map": "/ii-personal-area/static/css/main.665f71a8.chunk.css.map",
-    "static/js/2.390f3870.chunk.js.LICENSE.txt": "/ii-personal-area/static/js/2.390f3870.chunk.js.LICENSE.txt",
+    "static/css/main.4589fac3.chunk.css.map": "/ii-personal-area/static/css/main.4589fac3.chunk.css.map",
+    "static/js/2.b32e5793.chunk.js.LICENSE.txt": "/ii-personal-area/static/js/2.b32e5793.chunk.js.LICENSE.txt",
+    "static/media/cat-avatar.jpg": "/ii-personal-area/static/media/cat-avatar.a1eef79e.jpg",
     "static/media/App.css": "/ii-personal-area/static/media/cosmos.7e6e1cf7.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8c54ad9d.js",
     "static/css/2.816f14d9.chunk.css",
-    "static/js/2.390f3870.chunk.js",
-    "static/css/main.665f71a8.chunk.css",
-    "static/js/main.f70bc3fd.chunk.js"
+    "static/js/2.b32e5793.chunk.js",
+    "static/css/main.4589fac3.chunk.css",
+    "static/js/main.df781b0d.chunk.js"
   ]
 }
