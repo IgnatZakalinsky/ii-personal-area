@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import {selectApp} from '../../i1-main/m2-bll/appReducer'
-import avatar from './../../imgs/cat-avatar.jpg'
+import avatar from './../../imgs/cat-avatar.gif'
 import s from './Profile.module.css'
 
 const Profile = () => {

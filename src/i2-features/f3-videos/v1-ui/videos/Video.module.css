@@ -1,0 +1,31 @@
+.v {
+    display: flex;
+    max-width: calc(100vw - 48px);
+    overflow: hidden;
+}
+
+.name {
+    width: 30vw;
+    overflow: hidden;
+    cursor: pointer;
+    color: #177ddc;
+}
+
+.name:hover {
+    color: #165996;
+}
+
+.tags {
+    width: 30vw;
+    overflow: hidden;
+}
+
+.created {
+    width: 15vw;
+    overflow: hidden;
+}
+
+.updated {
+    width: 15vw;
+    overflow: hidden;
+}
