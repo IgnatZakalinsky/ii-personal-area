@@ -1,10 +1,11 @@
 import React, {ChangeEvent} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {appActions, selectApp} from '../../i1-main/m2-bll/appReducer'
 import avatar from './../../imgs/cat-avatar.gif'
 import s from './Profile.module.css'
 import {instance} from "../../i1-main/m3-dal/instance";
 import {useActions} from "../../i1-main/m2-bll/helpers";
+import {message} from "antd";
 
 const Profile = () => {
     const {user} = useSelector(selectApp)
@@ -17,7 +18,7 @@ const Profile = () => {
 
         const newFile = e.target.files && e.target.files[0]
 
-        if (newFile) {
+        if (newFile && newFile.size < (1048576 * 2)) {
             // setFileURL(window.URL.createObjectURL(newFile))
             reader.onloadend = () => {
                 instance.put('/auth/me', {id: user._id, avatar: reader.result})
@@ -26,6 +27,8 @@ const Profile = () => {
                     })
             }
             reader.readAsDataURL(newFile)
+        } else {
+            message.warn('Разрешены файлы только до 2Мб!')
         }
     }
 
@@ -39,7 +42,13 @@ const Profile = () => {
                     ref.current?.click()
                 }}
             />
-            <input type={'file'} style={{display: 'none'}} ref={ref} onChange={change}/>
+            <input
+                type={'file'}
+                style={{display: 'none'}}
+                ref={ref}
+                onChange={change}
+                accept={'image/jpeg,image/png,image/gif'}
+            />
 
             <div className={s.info}>
                 <div>{user.courseTitle}</div>
