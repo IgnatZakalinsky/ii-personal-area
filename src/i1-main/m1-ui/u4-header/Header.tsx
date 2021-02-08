@@ -28,10 +28,12 @@ const Header = React.memo(() => {
                     </a>
                 )}
                 extra={[
-                    // <NavLink to={PATH.LOGIN} key={PATH.LOGIN}>login</NavLink>,
+                    !isVerified && <NavLink to={PATH.LOGIN} key={PATH.LOGIN}>LOGIN</NavLink>,
                     isVerified && <NavLink to={PATH.PROFILE} key={'PROFILE'}>PROFILE</NavLink>,
+                    // <NavLink to={PATH.PROFILE} key={'PROFILE'}>PROFILE</NavLink>,
+                    isVerified && <NavLink to={PATH.PLAYLISTS} key={PATH.PLAYLISTS}>PLAYLISTS</NavLink>,
                     isVerified && <NavLink to={PATH.LOGIN} key={'LOGOUT'} onClick={logoutThunk}>LOGOUT</NavLink>,
-                    // <NavLink to={PATH.PLAYLISTS} key={PATH.PLAYLISTS}>playlists</NavLink>,
+
                 ]}
             />
             <Divider/>

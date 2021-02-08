@@ -3,7 +3,8 @@ import {AppStoreType} from './store'
 import {LoginAPI} from '../../i2-features/f1-login/l3-dal/LoginAPI'
 
 const defUser: UserType = {
-    id: 0,
+    _id: '',
+    baseId: 0,
     level: 0,
     telegramId: 746128000,
     lastUpdateDate: '2020-12-30T10:09:01.0488913Z',
@@ -13,6 +14,7 @@ const defUser: UserType = {
     firstName: 'Fake',
     lastName: 'Anonymous',
     isAdmin: false,
+    avatar: '',
 }
 
 // < {answer}, {params}, {rejectValue {in catch}}>
@@ -86,7 +88,8 @@ export const logoutThunk = createAsyncThunk<{ error?: string }, void, { rejectVa
 )
 
 export type UserType = {
-    id: number // 3,
+    _id: string
+    baseId: number // 3,
     level: number // 0,
     telegramId: number // 746128000,
     lastUpdateDate: string // '2020-12-30T10:09:01.0488913Z',
@@ -96,6 +99,7 @@ export type UserType = {
     firstName: string // 'Игн',
     lastName: string // 'Зак'
     isAdmin: boolean
+    avatar: string
 }
 
 const slice = createSlice({
@@ -124,7 +128,10 @@ const slice = createSlice({
         setLoading: (state, action: PayloadAction<{ isLoading: boolean }>) => {
             state.isLoading = action.payload.isLoading
             state.error = ''
-        }
+        },
+        changeAvatar: (state, action: PayloadAction<{avatar: string}>) => {
+            state.user.avatar = action.payload.avatar
+        },
 
     },
     extraReducers: (builder) => {
