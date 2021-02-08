@@ -22,11 +22,11 @@ const Routes = () => {
             <Route path={PATH.LOGIN} render={() => <LoginPage/>}/>
 
             <Route path={PATH.PROFILE} render={() => <AuthRedirectPage><ProfilePage/></AuthRedirectPage>}/>
-            <Route path={PATH.PLAYLISTS} render={() => <AuthRedirectPage><PlaylistsPage/></AuthRedirectPage>}/>
-            <Route
-                path={PATH.VIDEOS + '/:playlistId'}
-                render={() => <AuthRedirectPage><VideosPage/></AuthRedirectPage>}
-            />
+            {/*<Route path={PATH.PLAYLISTS} render={() => <AuthRedirectPage><PlaylistsPage/></AuthRedirectPage>}/>*/}
+            {/*<Route*/}
+            {/*    path={PATH.VIDEOS + '/:playlistId'}*/}
+            {/*    render={() => <AuthRedirectPage><VideosPage/></AuthRedirectPage>}*/}
+            {/*/>*/}
 
             <Route render={() => <div>404</div>}/>
         </Switch>
